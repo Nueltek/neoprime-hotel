@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GT America alternative - using similar geometric sans */
+@font-face {
+  font-family: 'GT America';
+  src: local('SF Pro Display'), local('Helvetica Neue'), local('Arial');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America';
+  src: local('SF Pro Display'), local('Helvetica Neue'), local('Arial');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America';
+  src: local('SF Pro Display'), local('Helvetica Neue'), local('Arial');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  html[data-scroll-behavior="smooth"] {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-luxury-black text-text-primary font-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-light;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-gold/30 text-white;
+  }
+}
+
+@layer components {
+  /* Gold button base styles */
+  .btn-gold {
+    @apply px-6 py-3 text-sm tracking-widest uppercase font-serif font-medium 
+           border border-gold text-gold
+           transition-all duration-300 ease-out
+           hover:bg-gold hover:text-luxury-black;
+  }
+
+  .btn-gold-filled {
+    @apply px-6 py-3 text-sm tracking-widest uppercase font-serif font-medium 
+           bg-gold text-luxury-black
+           transition-all duration-300 ease-out
+           hover:bg-gold-light;
+  }
+
+  .btn-white {
+    @apply px-6 py-3 text-sm tracking-widest uppercase font-serif font-medium 
+           border border-white text-white
+           transition-all duration-300 ease-out
+           hover:bg-white hover:text-luxury-black;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-16 lg:py-28;
+  }
+
+  /* Gold divider */
+  .gold-divider {
+    @apply w-16 h-px bg-gold;
+  }
+
+  /* Image hover zoom effect */
+  .img-zoom {
+    @apply overflow-hidden;
+  }
+
+  .img-zoom img {
+    @apply transition-transform duration-400 ease-out;
+  }
+
+  .img-zoom:hover img {
+    @apply scale-105;
+  }
+}
+
+@layer utilities {
+  /* Text gradient for special headings */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold to-gold-light bg-clip-text text-transparent;
+  }
+
+  /* Smooth scroll snap */
+  .scroll-snap-y {
+    scroll-snap-type: y mandatory;
+  }
+
+  .scroll-snap-start {
+    scroll-snap-align: start;
+  }
+}
+
+/* Spinner animation for loading states */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
