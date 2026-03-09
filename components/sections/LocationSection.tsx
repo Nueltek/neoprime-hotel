@@ -1,10 +1,15 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Button from '@/components/ui/Button';
-import { MapPin } from 'lucide-react';
-import { slideInLeftVariants, slideInRightVariants, viewportSettings, images } from '@/lib/utils';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Button from "@/components/ui/Button";
+import { MapPin } from "lucide-react";
+import {
+  slideInLeftVariants,
+  slideInRightVariants,
+  viewportSettings,
+  images,
+} from "@/lib/utils";
 
 export default function LocationSection() {
   return (
@@ -43,11 +48,12 @@ export default function LocationSection() {
             </h2>
             <div className="w-16 h-px bg-gold mb-6" />
             <p className="text-body text-text-secondary font-serif mb-6 leading-relaxed">
-              Located in the heart of Newcastle city centre, Neoprime Newcastle offers 
-              the perfect base for exploring everything this vibrant city has to offer. 
-              Just moments from the iconic Quayside and Grey Street.
+              Located in the heart of Newcastle city centre, Neoprime Newcastle
+              offers the perfect base for exploring everything this vibrant city
+              has to offer. Just moments from the iconic Quayside and Grey
+              Street.
             </p>
-            
+
             {/* Address */}
             <div className="flex items-start gap-3 mb-8">
               <MapPin className="text-gold flex-shrink-0 mt-1" size={18} />
@@ -59,7 +65,7 @@ export default function LocationSection() {
               </div>
             </div>
 
-            <Button variant="outline" href="#location">
+            <Button variant="outline" href="/location">
               View Location
             </Button>
           </div>

@@ -1,22 +1,29 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import EventCard from '@/components/ui/EventCard';
-import { staggerContainerVariants, fadeUpVariants, viewportSettings, images } from '@/lib/utils';
+import { motion } from "framer-motion";
+import EventCard from "@/components/ui/EventCard";
+import {
+  staggerContainerVariants,
+  fadeUpVariants,
+  viewportSettings,
+  images,
+} from "@/lib/utils";
 
 const events = [
   {
     image: images.meetings,
-    title: 'Meetings and Events',
-    description: 'From intimate boardroom meetings to large-scale conferences, our versatile event spaces offer the perfect setting for any occasion with state-of-the-art facilities.',
-    link: '#meetings'
+    title: "Meetings and Events",
+    description:
+      "From intimate boardroom meetings to large-scale conferences, our versatile event spaces offer the perfect setting for any occasion with state-of-the-art facilities.",
+    link: "/meetings",
   },
   {
     image: images.privateDining,
-    title: 'Private Dining',
-    description: 'Host your next special occasion in our elegant private dining rooms. Perfect for celebrations, corporate entertaining, and intimate gatherings.',
-    link: '#private-dining'
-  }
+    title: "Private Dining",
+    description:
+      "Host your next special occasion in our elegant private dining rooms. Perfect for celebrations, corporate entertaining, and intimate gatherings.",
+    link: "/dining",
+  },
 ];
 
 export default function MeetingsSection() {

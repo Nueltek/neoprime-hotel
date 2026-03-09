@@ -1,12 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { format } from 'date-fns';
-import { fadeUpVariants, staggerContainerVariants, viewportSettings } from '@/lib/utils';
-import { Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { format } from "date-fns";
+import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
 
 interface Event {
   _id: string;
@@ -24,14 +23,19 @@ export default function EventsSection() {
   const [events, setEvents] = useState<Event[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showSection, setShowSection] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch settings to check if events should be shown
-        const settingsRes = await fetch('/api/settings');
+        const settingsRes = await fetch("/api/settings");
         const settingsData = await settingsRes.json();
-        
+
         if (!settingsData.settings?.showEvents) {
           setShowSection(false);
           setIsLoading(false);
@@ -39,11 +43,11 @@ export default function EventsSection() {
         }
 
         // Fetch upcoming events
-        const eventsRes = await fetch('/api/events?upcoming=true&limit=3');
+        const eventsRes = await fetch("/api/events?upcoming=true&limit=3");
         const eventsData = await eventsRes.json();
         setEvents(eventsData.events || []);
       } catch (error) {
-        console.error('Error fetching events:', error);
+        console.error("Error fetching events:", error);
       } finally {
         setIsLoading(false);
       }
@@ -58,15 +62,14 @@ export default function EventsSection() {
 
   return (
     <section className="section-padding bg-luxury-dark">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewportSettings}
-        variants={staggerContainerVariants}
-        className="section-container"
-      >
+      <div className="section-container">
         {/* Section Header */}
-        <motion.div variants={fadeUpVariants} className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <span className="text-gold text-xs tracking-[0.4em] uppercase font-sans mb-4 block">
             What's On
           </span>
@@ -80,7 +83,9 @@ export default function EventsSection() {
           {events.map((event, index) => (
             <motion.div
               key={event._id}
-              variants={fadeUpVariants}
+              initial={{ opacity: 0, y: 40 }}
+              animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              transition={{ duration: 0.6, delay: 0.1 * (index + 1) }}
               className="group"
             >
               <div className="bg-luxury-black border border-white/10 overflow-hidden hover:border-gold/30 transition-colors">
@@ -98,14 +103,14 @@ export default function EventsSection() {
                       <Calendar className="text-gold/30" size={48} />
                     </div>
                   )}
-                  
+
                   {/* Date Badge */}
                   <div className="absolute top-4 left-4 bg-gold text-luxury-black px-3 py-2 text-center">
                     <span className="block text-2xl font-sans font-bold leading-none">
-                      {format(new Date(event.date), 'd')}
+                      {format(new Date(event.date), "d")}
                     </span>
                     <span className="block text-xs uppercase tracking-wide">
-                      {format(new Date(event.date), 'MMM')}
+                      {format(new Date(event.date), "MMM")}
                     </span>
                   </div>
                 </div>
@@ -149,7 +154,12 @@ export default function EventsSection() {
         </div>
 
         {/* View All Link */}
-        <motion.div variants={fadeUpVariants} className="text-center mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-12"
+        >
           <Link
             href="/events"
             className="inline-flex items-center gap-2 text-gold hover:text-gold-light text-sm font-sans uppercase tracking-widest transition-colors"
@@ -158,7 +168,7 @@ export default function EventsSection() {
             <ArrowRight size={14} />
           </Link>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

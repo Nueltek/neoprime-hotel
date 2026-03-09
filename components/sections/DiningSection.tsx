@@ -1,9 +1,15 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Button from '@/components/ui/Button';
-import { fadeUpVariants, slideInLeftVariants, slideInRightVariants, viewportSettings, images } from '@/lib/utils';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Button from "@/components/ui/Button";
+import {
+  fadeUpVariants,
+  slideInLeftVariants,
+  slideInRightVariants,
+  viewportSettings,
+  images,
+} from "@/lib/utils";
 
 export default function DiningSection() {
   return (
@@ -26,12 +32,13 @@ export default function DiningSection() {
             </h2>
             <div className="w-16 h-px bg-gold mb-6" />
             <p className="text-body text-text-secondary font-serif mb-8 leading-relaxed">
-              The Neoprime Grill offers an exceptional dining experience with a menu 
-              that celebrates the finest seasonal ingredients. Our expert chefs craft 
-              dishes that are both innovative and comforting, complemented by an 
-              extensive wine list and creative cocktails from our stylish bar.
+              The Neoprime Grill offers an exceptional dining experience with a
+              menu that celebrates the finest seasonal ingredients. Our expert
+              chefs craft dishes that are both innovative and comforting,
+              complemented by an extensive wine list and creative cocktails from
+              our stylish bar.
             </p>
-            <Button variant="outline" href="#menus">
+            <Button variant="outline" href="/menu">
               View Menus
             </Button>
           </motion.div>
