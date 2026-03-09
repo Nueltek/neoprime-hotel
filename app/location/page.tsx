@@ -1,82 +1,95 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import PublicLayout from '@/components/layouts/PublicLayout';
-import PageHero from '@/components/ui/PageHero';
-import Button from '@/components/ui/Button';
-import { fadeUpVariants, staggerContainerVariants, viewportSettings } from '@/lib/utils';
-import { MapPin, Phone, Mail, Clock, Car, Train, Plane } from 'lucide-react';
-import { useContactInfo, useBookingInfo } from '@/components/providers/SiteSettingsProvider';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import PublicLayout from "@/components/layouts/PublicLayout";
+import PageHero from "@/components/ui/PageHero";
+import Button from "@/components/ui/Button";
+import {
+  fadeUpVariants,
+  staggerContainerVariants,
+  viewportSettings,
+} from "@/lib/utils";
+import { MapPin, Phone, Mail, Clock, Car, Train, Plane } from "lucide-react";
+import {
+  useContactInfo,
+  useBookingInfo,
+} from "@/components/providers/SiteSettingsProvider";
 
 const nearbyAttractions = [
   {
-    name: 'Newcastle Quayside',
-    distance: '5 min walk',
-    description: 'Iconic waterfront with restaurants, bars, and the famous Tyne Bridge.'
+    name: "Newcastle Quayside",
+    distance: "5 min walk",
+    description:
+      "Iconic waterfront with restaurants, bars, and the famous Tyne Bridge.",
   },
   {
-    name: 'Grey Street',
-    distance: '7 min walk',
-    description: 'One of Britain\'s finest streets, lined with elegant Georgian architecture.'
+    name: "Grey Street",
+    distance: "7 min walk",
+    description:
+      "One of Britain's finest streets, lined with elegant Georgian architecture.",
   },
   {
-    name: 'Theatre Royal',
-    distance: '8 min walk',
-    description: 'Grade I listed theatre hosting world-class performances since 1837.'
+    name: "Theatre Royal",
+    distance: "8 min walk",
+    description:
+      "Grade I listed theatre hosting world-class performances since 1837.",
   },
   {
-    name: 'St. James\' Park',
-    distance: '12 min walk',
-    description: 'Home of Newcastle United FC, offering stadium tours and match experiences.'
+    name: "St. James' Park",
+    distance: "12 min walk",
+    description:
+      "Home of Newcastle United FC, offering stadium tours and match experiences.",
   },
   {
-    name: 'The BALTIC',
-    distance: '10 min walk',
-    description: 'International centre for contemporary art on the Gateshead Quays.'
+    name: "The BALTIC",
+    distance: "10 min walk",
+    description:
+      "International centre for contemporary art on the Gateshead Quays.",
   },
   {
-    name: 'Sage Gateshead',
-    distance: '12 min walk',
-    description: 'Iconic music venue and conference centre designed by Norman Foster.'
-  }
+    name: "Sage Gateshead",
+    distance: "12 min walk",
+    description:
+      "Iconic music venue and conference centre designed by Norman Foster.",
+  },
 ];
 
 const transportOptions = [
   {
     icon: Plane,
-    title: 'By Air',
+    title: "By Air",
     details: [
-      'Newcastle International Airport: 20 minutes by car',
-      'Airport transfers available upon request',
-      'Direct flights from major UK and European cities'
-    ]
+      "Newcastle International Airport: 20 minutes by car",
+      "Airport transfers available upon request",
+      "Direct flights from major UK and European cities",
+    ],
   },
   {
     icon: Train,
-    title: 'By Train',
+    title: "By Train",
     details: [
-      'Newcastle Central Station: 10 minutes walk',
-      'Direct services from London Kings Cross (2h 45m)',
-      'Connections from Edinburgh, Manchester, and beyond'
-    ]
+      "Newcastle Central Station: 10 minutes walk",
+      "Direct services from London Kings Cross (2h 45m)",
+      "Connections from Edinburgh, Manchester, and beyond",
+    ],
   },
   {
     icon: Car,
-    title: 'By Car',
+    title: "By Car",
     details: [
-      'A1(M) motorway: Exit at Newcastle city centre',
-      'Valet parking available (£35/day)',
-      'Self-parking at nearby NCP (£25/day)'
-    ]
-  }
+      "A1(M) motorway: Exit at Newcastle city centre",
+      "Valet parking available (£35/day)",
+      "Self-parking at nearby NCP (£25/day)",
+    ],
+  },
 ];
 
 export default function LocationPage() {
   const contact = useContactInfo();
   const booking = useBookingInfo();
-  
-  const phoneLink = contact.phone.replace(/\s/g, '').replace(/[()]/g, '');
+
+  const phoneLink = contact.phone.replace(/\s/g, "").replace(/[()]/g, "");
 
   return (
     <PublicLayout>
@@ -111,9 +124,12 @@ export default function LocationPage() {
                 <div className="flex gap-4 mb-6">
                   <MapPin className="text-gold flex-shrink-0 mt-1" size={20} />
                   <div>
-                    <h3 className="text-luxury-black font-sans uppercase tracking-wide mb-2">Address</h3>
+                    <h3 className="text-luxury-black font-sans uppercase tracking-wide mb-2">
+                      Address
+                    </h3>
                     <p className="text-text-muted font-serif whitespace-pre-line">
-                      {contact.address || '1 Neoprime Square\nNewcastle upon Tyne\nNE1 4AD\nUnited Kingdom'}
+                      {contact.address ||
+                        "1 Neoprime Square\nNewcastle upon Tyne\nNE1 4AD\nUnited Kingdom"}
                     </p>
                   </div>
                 </div>
@@ -122,9 +138,14 @@ export default function LocationPage() {
                 <div className="flex gap-4 mb-6">
                   <Phone className="text-gold flex-shrink-0 mt-1" size={20} />
                   <div>
-                    <h3 className="text-luxury-black font-sans uppercase tracking-wide mb-2">Telephone</h3>
+                    <h3 className="text-luxury-black font-sans uppercase tracking-wide mb-2">
+                      Telephone
+                    </h3>
                     <p className="text-text-muted font-serif">
-                      <a href={`tel:${phoneLink}`} className="hover:text-gold transition-colors">
+                      <a
+                        href={`tel:${phoneLink}`}
+                        className="hover:text-gold transition-colors"
+                      >
                         {contact.phone}
                       </a>
                     </p>
@@ -135,9 +156,14 @@ export default function LocationPage() {
                 <div className="flex gap-4 mb-6">
                   <Mail className="text-gold flex-shrink-0 mt-1" size={20} />
                   <div>
-                    <h3 className="text-luxury-black font-sans uppercase tracking-wide mb-2">Email</h3>
+                    <h3 className="text-luxury-black font-sans uppercase tracking-wide mb-2">
+                      Email
+                    </h3>
                     <p className="text-text-muted font-serif">
-                      <a href={`mailto:${contact.email}`} className="hover:text-gold transition-colors">
+                      <a
+                        href={`mailto:${contact.email}`}
+                        className="hover:text-gold transition-colors"
+                      >
                         {contact.email}
                       </a>
                     </p>
@@ -148,7 +174,9 @@ export default function LocationPage() {
                 <div className="flex gap-4">
                   <Clock className="text-gold flex-shrink-0 mt-1" size={20} />
                   <div>
-                    <h3 className="text-luxury-black font-sans uppercase tracking-wide mb-2">Reception</h3>
+                    <h3 className="text-luxury-black font-sans uppercase tracking-wide mb-2">
+                      Reception
+                    </h3>
                     <p className="text-text-muted font-serif">
                       24 hours, 7 days a week
                     </p>
@@ -157,11 +185,16 @@ export default function LocationPage() {
               </motion.div>
 
               {/* Map Placeholder */}
-              <motion.div variants={fadeUpVariants} className="relative aspect-square lg:aspect-auto">
+              <motion.div
+                variants={fadeUpVariants}
+                className="relative aspect-square lg:aspect-auto"
+              >
                 <div className="absolute inset-0 bg-luxury-dark flex items-center justify-center">
                   <div className="text-center p-8">
                     <MapPin className="text-gold mx-auto mb-4" size={48} />
-                    <p className="text-white font-sans uppercase tracking-wide mb-2">Interactive Map</p>
+                    <p className="text-white font-sans uppercase tracking-wide mb-2">
+                      Interactive Map
+                    </p>
                     <p className="text-text-muted font-serif text-sm mb-6">
                       Embed your Google Maps here
                     </p>
@@ -211,7 +244,10 @@ export default function LocationPage() {
                   </h3>
                   <ul className="space-y-3">
                     {option.details.map((detail, index) => (
-                      <li key={index} className="text-text-muted font-serif text-sm">
+                      <li
+                        key={index}
+                        className="text-text-muted font-serif text-sm"
+                      >
                         {detail}
                       </li>
                     ))}
@@ -280,11 +316,11 @@ export default function LocationPage() {
               We're Here to Help
             </h2>
             <p className="text-text-muted font-serif mb-8 max-w-2xl mx-auto">
-              Our concierge team is available around the clock to assist with transportation, 
-              directions, and local recommendations.
+              Our concierge team is available around the clock to assist with
+              transportation, directions, and local recommendations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button href="/contact" variant="primary">
+              <Button href="/contact" variant="filled" className="py-5 ">
                 Contact Us
               </Button>
               <a
