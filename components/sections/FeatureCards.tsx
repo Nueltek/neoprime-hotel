@@ -1,28 +1,36 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import FeatureCard from '@/components/ui/FeatureCard';
-import { staggerContainerVariants, fadeUpVariants, viewportSettings, images } from '@/lib/utils';
+import { motion } from "framer-motion";
+import FeatureCard from "@/components/ui/FeatureCard";
+import {
+  staggerContainerVariants,
+  fadeUpVariants,
+  viewportSettings,
+  images,
+} from "@/lib/utils";
 
 const features = [
   {
     image: images.sleepInStyle,
-    title: 'Sleep in Style',
-    description: 'Stylish and modern rooms designed for ultimate comfort and relaxation.',
-    link: '#rooms'
+    title: "Sleep in Style",
+    description:
+      "Stylish and modern rooms designed for ultimate comfort and relaxation.",
+    link: "rooms",
   },
   {
     image: images.dineAtGrill,
-    title: 'Dine at the Grill',
-    description: 'Explore our signature restaurant featuring contemporary British cuisine.',
-    link: '#restaurant'
+    title: "Dine at the Grill",
+    description:
+      "Explore our signature restaurant featuring contemporary British cuisine.",
+    link: "dining",
   },
   {
     image: images.drinksAtBar,
-    title: 'Drinks at the Bar',
-    description: 'Sophisticated cocktails and fine wines in an intimate setting.',
-    link: '#bar'
-  }
+    title: "Drinks at the Bar",
+    description:
+      "Sophisticated cocktails and fine wines in an intimate setting.",
+    link: "dining#bar",
+  },
 ];
 
 export default function FeatureCards() {
